@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Proyecto.Models
+namespace Programacion_1.Models
 {
     public class Producto_Proveedor{
         [Key, Column(Order=0)]

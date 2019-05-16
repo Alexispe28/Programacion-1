@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/yayo/Desktop/Proyecto/Proyecto.csproj": {}
+    "/home/yayo/Desktop/Programacion-1/Programacion-1.csproj": {}
   },
   "projects": {
-    "/home/yayo/Desktop/Proyecto/Proyecto.csproj": {
+    "/home/yayo/Desktop/Programacion-1/Programacion-1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/yayo/Desktop/Proyecto/Proyecto.csproj",
-        "projectName": "Proyecto",
-        "projectPath": "/home/yayo/Desktop/Proyecto/Proyecto.csproj",
+        "projectUniqueName": "/home/yayo/Desktop/Programacion-1/Programacion-1.csproj",
+        "projectName": "Programacion-1",
+        "projectPath": "/home/yayo/Desktop/Programacion-1/Programacion-1.csproj",
         "packagesPath": "/home/yayo/.nuget/packages/",
-        "outputPath": "/home/yayo/Desktop/Proyecto/obj/",
+        "outputPath": "/home/yayo/Desktop/Programacion-1/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -55,10 +55,6 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
-            },
-            "Pomelo.EntityFrameworkCore.MySql": {
-              "target": "Package",
-              "version": "[2.2.0, )"
             }
           },
           "imports": [

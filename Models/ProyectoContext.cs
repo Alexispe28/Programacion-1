@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Proyecto.Models
+namespace Programacion_1.Models
 {
     public class ProyectoContext: DbContext
     {

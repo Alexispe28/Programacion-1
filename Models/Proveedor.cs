@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Proyecto.Models
+namespace Programacion_1.Models
 {
     public class Proveedor{
         [Key]
