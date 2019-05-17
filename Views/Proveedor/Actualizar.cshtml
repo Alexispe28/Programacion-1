@@ -1,8 +1,10 @@
 @model Proveedor
 
-<h1>Registrar nuevo proveedor</h1>
+<h1>Actualizar proveedor @Model.Nombre</h1>
 
-<form action="~/proveedor/registrar" method="post">
+<form action="~/proveedor/actualizar" method="post">
+
+<input type="hidden" asp-for="Id_Proveedor">
 
 <div class="form-group">
     <label>Nombre:</label>
