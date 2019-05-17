@@ -2779,13 +2779,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/_ViewImports.cshtml",
-      "TargetPath": "Views/_ViewImports.cshtml",
+      "FilePath": "Views/Proveedor/Registrar.cshtml",
+      "TargetPath": "Views/Proveedor/Registrar.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Home/Proveedor/Registrar.cshtml",
-      "TargetPath": "Views/Home/Proveedor/Registrar.cshtml",
+      "FilePath": "Views/_ViewImports.cshtml",
+      "TargetPath": "Views/_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {

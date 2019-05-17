@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Programacion_1.Models
 {
     public class Producto_Proveedor{
-        [Key, Column(Order=0)]
+        [Key]
         public int Id_Producto { get; set; }
-        [Key, Column(Order=1)]
+        [Key]
         public int Id_Proveedor { get; set; }
         [Required]
         public int Cantidad { get; set; }

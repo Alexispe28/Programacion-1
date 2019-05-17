@@ -34,8 +34,8 @@ namespace Programacion_1.Controllers
             if (ModelState.IsValid) {
                 _context.Proveedors.Add(p);
                 _context.SaveChanges();
-
-                return RedirectToAction("Listar");
+                return RedirectToAction("Registrar");
+                //return RedirectToAction("Listar");
             }
 
             return View(p);
@@ -62,7 +62,7 @@ namespace Programacion_1.Controllers
                 proveedorBd.Correo = p.Correo;
                 proveedorBd.Numero_Telefonico = p.Numero_Telefonico;
                 proveedorBd.Detalles = p.Detalles;
-                proveedorBd.Id_Direccion = p.Id_Direccion;
+                proveedorBd.Direccion = p.Direccion;
 
                 _context.SaveChanges();
 

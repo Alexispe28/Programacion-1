@@ -13,7 +13,7 @@ namespace Programacion_1.Models
         public string Numero_Telefonico { get; set; }
         [Required]
         public string Detalles { get; set; }
-        public int Id_Direccion { get; set; }
+        public string Direccion { get; set; }
     }
 }
     
