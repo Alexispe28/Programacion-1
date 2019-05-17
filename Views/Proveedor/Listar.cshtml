@@ -1,0 +1,35 @@
+@model List<Proveedor>
+
+<h1>Listado de Proveedor</h1>
+
+<table class="table">
+    <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>NumeroTelefonico</th>
+        <th>Detalles</th>
+        <th>Direccion</th>
+        <th>Opciones</th>
+    </tr>
+
+    @foreach(var p in Model) {
+        <tr>
+            <td>@p.Id_Proveedor</td>
+            <td>@p.Nombre</td>
+            <td>@p.Correo</td>
+            <td>@p.Numero_Telefonico</td>
+            <td>@p.Detalles</td>
+            <td>@p.Direccion</td>
+            <td>
+                <a href="~/productos/actualizar/@p.Id_Proveedor">Actualizar</a> | 
+                <a href="~/productos/borrar/@p.Id_Proveedor">Borrar</a>
+            </td>
+        </tr>
+    }
+    
+
+</table>
+
+
+<a href="~/productos/registrar">Registrar producto</a>
