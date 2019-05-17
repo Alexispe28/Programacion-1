@@ -34,8 +34,7 @@ namespace Programacion_1.Controllers
             if (ModelState.IsValid) {
                 _context.Proveedors.Add(p);
                 _context.SaveChanges();
-                return RedirectToAction("Registrar");
-                //return RedirectToAction("Listar");
+                return RedirectToAction("Listar");
             }
 
             return View(p);
