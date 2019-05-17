@@ -15,14 +15,14 @@ namespace Programacion_1.Controllers
         public ProveedorController(ProyectoContext context) {
             _context = context;
         }
-
+        //Mostrar Lista
         public IActionResult Listar()
         {
             var proveedor = _context.Proveedors.ToList();
 
             return View(proveedor);
         }
-
+        //Registrar
         public IActionResult Registrar()
         {
             return View();
@@ -39,7 +39,7 @@ namespace Programacion_1.Controllers
 
             return View(p);
         }
-
+        //Actualizar
         public IActionResult Actualizar(int id)
         {
             var p = _context.Proveedors.FirstOrDefault(x => x.Id_Proveedor == id);
@@ -70,11 +70,15 @@ namespace Programacion_1.Controllers
 
             return View(p);
         }
-
-        public IActionResult Borrar(int id)
+        //Eliminar
+        public IActionResult Eliminar(int id)
         {
             var p = _context.Proveedors.FirstOrDefault(x => x.Id_Proveedor == id);
-
+            return View(p);
+        }
+        [HttpPost]
+        public IActionResult Eliminar(Proveedor p)
+        {
             if (p != null) {
                 _context.Proveedors.Remove(p);
                 _context.SaveChanges();

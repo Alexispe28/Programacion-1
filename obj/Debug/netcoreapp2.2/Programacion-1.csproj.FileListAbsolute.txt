@@ -1,10 +1,3 @@
-/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.deps.json
-/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.runtimeconfig.json
-/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.runtimeconfig.dev.json
-/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.dll
-/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.pdb
-/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.Views.dll
-/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.Views.pdb
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.csprojAssemblyReference.cache
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.csproj.CoreCompileInputs.cache
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.RazorAssemblyInfo.cache
@@ -14,9 +7,19 @@
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.TagHelpers.input.cache
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.TagHelpers.output.cache
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.RazorCoreGenerate.cache
+/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.dll
+/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.pdb
+/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.deps.json
+/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.runtimeconfig.json
+/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.runtimeconfig.dev.json
+/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.dll
+/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.pdb
+/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.Views.dll
+/home/yayo/Desktop/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.Views.pdb
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Home/Index.g.cshtml.cs
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Home/Privacy.g.cshtml.cs
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Proveedor/Actualizar.g.cshtml.cs
+/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Proveedor/Eliminar.g.cshtml.cs
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Proveedor/Listar.g.cshtml.cs
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Proveedor/Registrar.g.cshtml.cs
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Shared/Error.g.cshtml.cs
@@ -28,6 +31,4 @@
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.RazorTargetAssemblyInfo.cache
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.RazorTargetAssemblyInfo.cs
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.Views.pdb
-/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.dll
-/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.pdb
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.csproj.CopyComplete
