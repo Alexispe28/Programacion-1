@@ -1,0 +1,10 @@
+@model Marca
+
+<h1>Eliminar</h1>
+<p>¿Deseas Eliminar <strong>@Model.Nombre</strong>?</p>
+
+<form action="~/marca/eliminar" method="post">
+    <input type="hidden" asp-for="Id_Marca">
+    <button class="btn btn btn-default">Si</button>
+    <a href="~/marca/listar" class="btn btn-default a-btn-slide-text">No</a>
+</form>

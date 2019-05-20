@@ -83,22 +83,6 @@ namespace Programacion_1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Productos",
-                columns: table => new
-                {
-                    Id_Producto = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nombre = table.Column<string>(nullable: false),
-                    Precio = table.Column<string>(nullable: false),
-                    Id_Categoria = table.Column<int>(nullable: false),
-                    Id_Marca = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Productos", x => x.Id_Producto);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Proveedors",
                 columns: table => new
                 {
@@ -114,21 +98,53 @@ namespace Programacion_1.Migrations
                 {
                     table.PrimaryKey("PK_Proveedors", x => x.Id_Proveedor);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Productos",
+                columns: table => new
+                {
+                    Id_Producto = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombre = table.Column<string>(nullable: false),
+                    Precio = table.Column<string>(nullable: false),
+                    Id_Categoria = table.Column<int>(nullable: false),
+                    Id_Marca = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Productos", x => x.Id_Producto);
+                    table.ForeignKey(
+                        name: "FK_Productos_Categorias_Id_Categoria",
+                        column: x => x.Id_Categoria,
+                        principalTable: "Categorias",
+                        principalColumn: "Id_Categoria",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Productos_Marcas_Id_Marca",
+                        column: x => x.Id_Marca,
+                        principalTable: "Marcas",
+                        principalColumn: "Id_Marca",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Productos_Id_Categoria",
+                table: "Productos",
+                column: "Id_Categoria");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Productos_Id_Marca",
+                table: "Productos",
+                column: "Id_Marca");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Categorias");
-
-            migrationBuilder.DropTable(
                 name: "Clientes");
 
             migrationBuilder.DropTable(
                 name: "Facturas");
-
-            migrationBuilder.DropTable(
-                name: "Marcas");
 
             migrationBuilder.DropTable(
                 name: "Producto_Proveedors");
@@ -138,6 +154,12 @@ namespace Programacion_1.Migrations
 
             migrationBuilder.DropTable(
                 name: "Proveedors");
+
+            migrationBuilder.DropTable(
+                name: "Categorias");
+
+            migrationBuilder.DropTable(
+                name: "Marcas");
         }
     }
 }

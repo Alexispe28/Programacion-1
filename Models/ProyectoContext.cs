@@ -15,8 +15,14 @@ namespace Programacion_1.Models
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-        modelBuilder.Entity<Producto_Proveedor>()
+            
+            modelBuilder.Entity<Producto_Proveedor>()
             .HasKey(c => new { c.Id_Producto, c.Id_Proveedor });
+            //Foreign Key Producto
+            modelBuilder.Entity<Producto>().HasOne<Categoria>(s => s.Categoria)
+            .WithMany(p => p.Productos).HasForeignKey(p => p.Id_Categoria);
+            modelBuilder.Entity<Producto>().HasOne<Marca>(s => s.Marca)
+            .WithMany(p => p.Productos).HasForeignKey(p => p.Id_Marca);
         }
     }
 }

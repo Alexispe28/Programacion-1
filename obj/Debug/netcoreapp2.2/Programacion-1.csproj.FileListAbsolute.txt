@@ -32,3 +32,7 @@
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.RazorTargetAssemblyInfo.cs
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.Views.pdb
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.csproj.CopyComplete
+/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Marca/Actualizar.g.cshtml.cs
+/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Marca/Eliminar.g.cshtml.cs
+/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Marca/Listar.g.cshtml.cs
+/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Marca/Registrar.g.cshtml.cs

@@ -1,0 +1,18 @@
+@model Marca
+
+<h1>Actualizar marca @Model.Nombre</h1>
+
+<form action="~/marca/actualizar" method="post">
+
+<!--Importante a la hora de hacer el Actualizar-->
+<input type="hidden" asp-for="Id_Marca">
+
+<div class="form-group">
+    <label>Nombre:</label>
+    <input type="text" class="form-control" asp-for="Nombre" >
+    @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+</div>
+
+<button class="btn btn-primary">Actualizar</button>
+
+</form>
