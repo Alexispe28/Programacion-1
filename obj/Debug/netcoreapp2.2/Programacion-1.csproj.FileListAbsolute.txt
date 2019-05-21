@@ -36,3 +36,7 @@
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Marca/Eliminar.g.cshtml.cs
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Marca/Listar.g.cshtml.cs
 /home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Marca/Registrar.g.cshtml.cs
+/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Categoria/Actualizar.g.cshtml.cs
+/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Categoria/Eliminar.g.cshtml.cs
+/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Categoria/Listar.g.cshtml.cs
+/home/yayo/Desktop/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Categoria/Registrar.g.cshtml.cs

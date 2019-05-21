@@ -2769,6 +2769,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Categoria/Registrar.cshtml",
+      "TargetPath": "Views/Categoria/Registrar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Home/Index.cshtml",
       "TargetPath": "Views/Home/Index.cshtml",
       "FileKind": "mvc"
@@ -2824,8 +2829,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Categoria/Listar.cshtml",
+      "TargetPath": "Views/Categoria/Listar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Proveedor/Eliminar.cshtml",
       "TargetPath": "Views/Proveedor/Eliminar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Categoria/Eliminar.cshtml",
+      "TargetPath": "Views/Categoria/Eliminar.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2836,6 +2851,11 @@
     {
       "FilePath": "Views/Shared/_Layout.cshtml",
       "TargetPath": "Views/Shared/_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Categoria/Actualizar.cshtml",
+      "TargetPath": "Views/Categoria/Actualizar.cshtml",
       "FileKind": "mvc"
     }
   ]
