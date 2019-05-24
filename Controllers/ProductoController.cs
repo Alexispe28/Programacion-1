@@ -54,6 +54,8 @@ namespace Programacion_1.Controllers
                 productoBd.Id_Producto=p.Id_Producto;
                 productoBd.Nombre = p.Nombre;
                 productoBd.Precio=p.Precio;
+                productoBd.Id_Categoria=p.Id_Categoria;
+                productoBd.Id_Marca=p.Id_Marca;
                 _context.SaveChanges();
 
                 return RedirectToAction("Listar");
