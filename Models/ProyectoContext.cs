@@ -23,6 +23,11 @@ namespace Programacion_1.Models
             .WithMany(p => p.Productos).HasForeignKey(p => p.Id_Categoria);
             modelBuilder.Entity<Producto>().HasOne<Marca>(s => s.Marca)
             .WithMany(p => p.Productos).HasForeignKey(p => p.Id_Marca);
+            //Foreign Key Producto_Proveedor
+            modelBuilder.Entity<Producto_Proveedor>().HasOne<Producto>(s => s.Producto)
+            .WithMany(p => p.Producto_Proveedores).HasForeignKey(p => p.Id_Producto);
+            modelBuilder.Entity<Producto_Proveedor>().HasOne<Proveedor>(s => s.Proveedor)
+            .WithMany(p => p.Producto_Proveedores).HasForeignKey(p => p.Id_Proveedor);
         }
     }
 }
