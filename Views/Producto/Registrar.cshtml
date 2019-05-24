@@ -1,0 +1,15 @@
+@model Producto
+
+<h1>Registrar Producto</h1>
+
+<form action="~/producto/registrar" method="post">
+
+<div class="form-group">
+    <label>Nombre:</label>
+    <input type="text" class="form-control" asp-for="Nombre" >
+    @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+</div>
+
+<button class="btn btn-primary">Registrar</button>
+
+</form>

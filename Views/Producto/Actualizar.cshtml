@@ -1,11 +1,11 @@
-@model Categoria
+@model Producto
 
-<h1>Actualizar categoria @Model.Nombre</h1>
+<h1>Actualizar producto @Model.Nombre</h1>
 
-<form action="~/categoria/actualizar" method="post">
+<form action="~/producto/actualizar" method="post">
 
 <!--Importante a la hora de hacer el Actualizar-->
-<input type="hidden" asp-for="Id_Categoria">
+<input type="hidden" asp-for="Id_Producto">
 
 <div class="form-group">
     <label>Nombre:</label>
