@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Programacion_1.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,21 +68,6 @@ namespace Programacion_1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Producto_Proveedors",
-                columns: table => new
-                {
-                    Id_Producto = table.Column<int>(nullable: false),
-                    Id_Proveedor = table.Column<int>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false),
-                    Fecha_de_Entrega = table.Column<string>(nullable: false),
-                    Fecha_de_Salida = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Producto_Proveedors", x => new { x.Id_Producto, x.Id_Proveedor });
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Proveedors",
                 columns: table => new
                 {
@@ -126,6 +111,38 @@ namespace Programacion_1.Migrations
                         principalColumn: "Id_Marca",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Producto_Proveedors",
+                columns: table => new
+                {
+                    Id_Producto = table.Column<int>(nullable: false),
+                    Id_Proveedor = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    Fecha_de_Entrega = table.Column<string>(nullable: false),
+                    Fecha_de_Salida = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Producto_Proveedors", x => new { x.Id_Producto, x.Id_Proveedor });
+                    table.ForeignKey(
+                        name: "FK_Producto_Proveedors_Productos_Id_Producto",
+                        column: x => x.Id_Producto,
+                        principalTable: "Productos",
+                        principalColumn: "Id_Producto",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Producto_Proveedors_Proveedors_Id_Proveedor",
+                        column: x => x.Id_Proveedor,
+                        principalTable: "Proveedors",
+                        principalColumn: "Id_Proveedor",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Producto_Proveedors_Id_Proveedor",
+                table: "Producto_Proveedors",
+                column: "Id_Proveedor");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Productos_Id_Categoria",

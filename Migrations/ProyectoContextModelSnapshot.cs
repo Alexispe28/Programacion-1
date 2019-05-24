@@ -125,6 +125,8 @@ namespace Programacion_1.Migrations
 
                     b.HasKey("Id_Producto", "Id_Proveedor");
 
+                    b.HasIndex("Id_Proveedor");
+
                     b.ToTable("Producto_Proveedors");
                 });
 
@@ -162,6 +164,19 @@ namespace Programacion_1.Migrations
                     b.HasOne("Programacion_1.Models.Marca", "Marca")
                         .WithMany("Productos")
                         .HasForeignKey("Id_Marca")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Programacion_1.Models.Producto_Proveedor", b =>
+                {
+                    b.HasOne("Programacion_1.Models.Producto", "Producto")
+                        .WithMany("Producto_Proveedores")
+                        .HasForeignKey("Id_Producto")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Programacion_1.Models.Proveedor", "Proveedor")
+                        .WithMany("Producto_Proveedores")
+                        .HasForeignKey("Id_Proveedor")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
