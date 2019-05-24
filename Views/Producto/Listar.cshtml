@@ -6,6 +6,9 @@
     <tr>
         <th>Código</th>
         <th>Nombre</th>
+        <th>Precio</th>
+        <th>Categoria</th>
+        <th>Marca</th>
         <th>Opciones</th>
     </tr>
 
@@ -13,6 +16,9 @@
         <tr>
             <td>@p.Id_Producto</td>
             <td>@p.Nombre</td>
+            <td>@p.Precio</td>
+            <td>@p.Categoria.Nombre</td>
+            <td>@p.Marca.Nombre</td>
             <td>
                 <a href="~/producto/actualizar/@p.Id_Producto" 
                 class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-edit"></a> | 

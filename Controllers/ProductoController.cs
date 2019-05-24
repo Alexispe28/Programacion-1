@@ -14,9 +14,8 @@ namespace Programacion_1.Controllers
         //Mostrar Lista
         public IActionResult Listar()
         {
-            var marca = _context.Productos.ToList();
-
-            return View(marca);
+            var producto = _context.Productos.ToList();
+            return View(producto);
         }
         //Registrar
         public IActionResult Registrar()
