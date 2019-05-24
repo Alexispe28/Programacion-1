@@ -12155,11 +12155,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/yayo/Desktop/Programacion-1/Programacion-1.csproj",
+      "projectUniqueName": "/home/yayo/Programacion-1/Programacion-1.csproj",
       "projectName": "Programacion-1",
-      "projectPath": "/home/yayo/Desktop/Programacion-1/Programacion-1.csproj",
+      "projectPath": "/home/yayo/Programacion-1/Programacion-1.csproj",
       "packagesPath": "/home/yayo/.nuget/packages/",
-      "outputPath": "/home/yayo/Desktop/Programacion-1/obj/",
+      "outputPath": "/home/yayo/Programacion-1/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
