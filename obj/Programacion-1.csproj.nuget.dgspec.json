@@ -1,30 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yayo\\Documents\\Programacion-1\\Programacion-1.csproj": {}
+    "/home/yayo/Programacion-1/Programacion-1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yayo\\Documents\\Programacion-1\\Programacion-1.csproj": {
+    "/home/yayo/Programacion-1/Programacion-1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yayo\\Documents\\Programacion-1\\Programacion-1.csproj",
+        "projectUniqueName": "/home/yayo/Programacion-1/Programacion-1.csproj",
         "projectName": "Programacion-1",
-        "projectPath": "C:\\Users\\Yayo\\Documents\\Programacion-1\\Programacion-1.csproj",
-        "packagesPath": "C:\\Users\\Yayo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yayo\\Documents\\Programacion-1\\obj\\",
+        "projectPath": "/home/yayo/Programacion-1/Programacion-1.csproj",
+        "packagesPath": "/home/yayo/.nuget/packages/",
+        "outputPath": "/home/yayo/Programacion-1/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Yayo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/yayo/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
