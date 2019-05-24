@@ -55,9 +55,9 @@ namespace Programacion_1.Controllers
         public IActionResult Actualizar(Categoria c)
         {
             if (ModelState.IsValid) {
-                var proveedorBd = _context.Categorias.Find(c.Id_Categoria);
+                var categoriaBd = _context.Categorias.Find(c.Id_Categoria);
 
-                proveedorBd.Nombre = c.Nombre;
+                categoriaBd.Nombre = c.Nombre;
 
                 _context.SaveChanges();
 

@@ -52,9 +52,9 @@ namespace Programacion_1.Controllers
         public IActionResult Actualizar(Marca m)
         {
             if (ModelState.IsValid) {
-                var proveedorBd = _context.Marcas.Find(m.Id_Marca);
+                var marcaBd = _context.Marcas.Find(m.Id_Marca);
 
-                proveedorBd.Nombre = m.Nombre;
+                marcaBd.Nombre = m.Nombre;
                 _context.SaveChanges();
 
                 return RedirectToAction("Listar");
