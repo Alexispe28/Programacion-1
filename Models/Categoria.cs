@@ -7,7 +7,7 @@ namespace Programacion_1.Models
         [Key]
         public int Id_Categoria { get; set; }
         public string Nombre { get; set; }
-        public ICollection<Producto> Productos { get; set; }
+        public List<Producto> Productos { get; set; }
     }
     
 }

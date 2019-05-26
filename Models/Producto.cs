@@ -14,7 +14,7 @@ namespace Programacion_1.Models
         public Categoria Categoria { get; set; }
         public int Id_Marca { get; set; }
         public Marca Marca { get; set; }
-        public ICollection<Producto_Proveedor> Producto_Proveedores { get; set; }
+        public List<Producto_Proveedor> Producto_Proveedores { get; set; }
     }
     
 }

@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Programacion_1.Models;
 namespace Programacion_1.Controllers
 {
@@ -14,12 +15,15 @@ namespace Programacion_1.Controllers
         //Mostrar Lista
         public IActionResult Listar()
         {
-            var producto = _context.Productos.ToList();
+            var producto = _context.Productos.Include(x => x.Marca)
+            .Include(y => y.Categoria).ToList();
             return View(producto);
         }
         //Registrar
         public IActionResult Registrar()
         {
+            ViewBag.Categoria = _context.Categorias.ToList();
+            ViewBag.Marca = _context.Marcas.ToList();
             return View();
         }
 
@@ -31,7 +35,8 @@ namespace Programacion_1.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Listar");
             }
-
+            ViewBag.Categoria = _context.Categorias.ToList();
+            ViewBag.Marca = _context.Marcas.ToList();
             return View(p);
         }
         //Actualizar
@@ -42,6 +47,8 @@ namespace Programacion_1.Controllers
             if (p == null) {
                 return NotFound();
             }
+            ViewBag.Categoria = _context.Categorias.ToList();
+            ViewBag.Marca = _context.Marcas.ToList();
 
             return View(p);
         }

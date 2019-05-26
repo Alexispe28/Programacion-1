@@ -1,8 +1,11 @@
 @model Producto
-
+@{
+    var categorias = (List<Categoria>)ViewBag.Categoria;
+    var marcas = (List<Marca>)ViewBag.Marca;
+}
 <h1>Registrar Producto</h1>
 
-<form action="~/producto/registrar" method="post">
+<form action="/producto/registrar" method="post">
 
 <div class="form-group">
     <label>Nombre:</label>
@@ -18,14 +21,20 @@
 
 <div class="form-group">
     <label>Categoria:</label>
-    <input type="text" class="form-control" asp-for="Categoria" >
-    @Html.ValidationMessageFor(m => m.Categoria, "", new { @class = "text-danger" })
+    <select class="form-control" asp-for="Id_Categoria">
+        @foreach(var c in categorias){
+            <option value="@c.Id_Categoria">@c.Nombre</option>
+        }
+    </select>
 </div>
 
 <div class="form-group">
     <label>Marca:</label>
-    <input type="text" class="form-control" asp-for="Marca" >
-    @Html.ValidationMessageFor(m => m.Marca, "", new { @class = "text-danger" })
+    <select class="form-control" asp-for="Id_Marca">
+        @foreach(var m in marcas){
+            <option value="@m.Id_Marca">@m.Nombre</option>
+        }
+    </select>
 </div>
 
 <button class="btn btn-primary">Registrar</button>

@@ -1,16 +1,42 @@
 @model Producto
-
+@{
+    var categorias = (List<Categoria>)ViewBag.Categoria;
+    var marcas = (List<Marca>)ViewBag.Marca;
+}
 <h1>Actualizar producto @Model.Nombre</h1>
 
-<form action="~/producto/actualizar" method="post">
+<form action="/producto/actualizar" method="post">
 
-<!--Importante a la hora de hacer el Actualizar-->
 <input type="hidden" asp-for="Id_Producto">
 
 <div class="form-group">
     <label>Nombre:</label>
     <input type="text" class="form-control" asp-for="Nombre" >
     @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    <label>Precio:</label>
+    <input type="text" class="form-control" asp-for="Precio" >
+    @Html.ValidationMessageFor(m => m.Precio, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    <label>Categoria:</label>
+    <select class="form-control" asp-for="Id_Categoria">
+        @foreach(var c in categorias){
+            <option value="@c.Id_Categoria">@c.Nombre</option>
+        }
+    </select>
+</div>
+
+<div class="form-group">
+    <label>Marca:</label>
+    <select class="form-control" asp-for="Id_Marca">
+        @foreach(var m in marcas){
+            <option value="@m.Id_Marca">@m.Nombre</option>
+        }
+    </select>
 </div>
 
 <button class="btn btn-primary">Actualizar</button>
