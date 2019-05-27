@@ -1,2 +1,36 @@
 @model Inventario
+@{
+    var proveedores = (List<Proveedor>)ViewBag.Proveedor;
+    var productos = (List<Producto>)ViewBag.Producto;
+}
 <h1>Registro de Stock de Inventario</h1>
+<form asp-action="Registrar" method="post">
+<div class="form-group">
+    <label>Proveedor:</label>
+    <select name="Id_Proveedor">
+        @foreach(var proveedor in proveedores){
+            <option value="@proveedor.Id_Proveedor">@proveedor.Nombre</option>
+        }
+    </select>
+</div>
+<div class="form-group">
+    <label>Producto:</label>
+    <select name="Id_Producto">
+        @foreach(var producto in productos){
+            <option value="@producto.Id_Producto">@producto.Nombre</option>
+        }
+    </select>
+</div>
+<div class="form-group">
+    <label>Cantidad:</label>
+    <input type="number" asp-for="Cantidad" min="1" max="100" >
+</div>
+<div class="form-group">
+    <label>Fecha de Salida:</label>
+    <input type="date" asp-for="Fecha_de_Salida" >
+</div>
+<div class="form-group">
+    <label>Fecha de Llegada:</label>
+    <input type="date" asp-for="Fecha_de_Entrega" >
+</div>
+</form>
