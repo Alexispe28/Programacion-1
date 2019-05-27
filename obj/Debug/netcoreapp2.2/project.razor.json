@@ -2794,6 +2794,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Inventario/Registrar.cshtml",
+      "TargetPath": "Views/Inventario/Registrar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Proveedor/Registrar.cshtml",
       "TargetPath": "Views/Proveedor/Registrar.cshtml",
       "FileKind": "mvc"

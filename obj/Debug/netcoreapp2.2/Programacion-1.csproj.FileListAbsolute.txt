@@ -132,3 +132,4 @@ C:/Users/Yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.cs
 /home/yayo/Programacion-1/bin/Debug/netcoreapp2.2/Programacion-1.Views.pdb
 /home/yayo/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.Views.pdb
 /home/yayo/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.csproj.CopyComplete
+/home/yayo/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Inventario/Registrar.g.cshtml.cs

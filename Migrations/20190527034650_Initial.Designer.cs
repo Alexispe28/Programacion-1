@@ -8,7 +8,7 @@ using Programacion_1.Models;
 namespace Programacion_1.Migrations
 {
     [DbContext(typeof(ProyectoContext))]
-    [Migration("20190524224656_Initial")]
+    [Migration("20190527034650_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,6 +74,27 @@ namespace Programacion_1.Migrations
                     b.ToTable("Facturas");
                 });
 
+            modelBuilder.Entity("Programacion_1.Models.Inventario", b =>
+                {
+                    b.Property<int>("Id_Producto");
+
+                    b.Property<int>("Id_Proveedor");
+
+                    b.Property<int>("Cantidad");
+
+                    b.Property<string>("Fecha_de_Entrega")
+                        .IsRequired();
+
+                    b.Property<string>("Fecha_de_Salida")
+                        .IsRequired();
+
+                    b.HasKey("Id_Producto", "Id_Proveedor");
+
+                    b.HasIndex("Id_Proveedor");
+
+                    b.ToTable("Inventarios");
+                });
+
             modelBuilder.Entity("Programacion_1.Models.Marca", b =>
                 {
                     b.Property<int>("Id_Marca")
@@ -111,27 +132,6 @@ namespace Programacion_1.Migrations
                     b.ToTable("Productos");
                 });
 
-            modelBuilder.Entity("Programacion_1.Models.Producto_Proveedor", b =>
-                {
-                    b.Property<int>("Id_Producto");
-
-                    b.Property<int>("Id_Proveedor");
-
-                    b.Property<int>("Cantidad");
-
-                    b.Property<string>("Fecha_de_Entrega")
-                        .IsRequired();
-
-                    b.Property<string>("Fecha_de_Salida")
-                        .IsRequired();
-
-                    b.HasKey("Id_Producto", "Id_Proveedor");
-
-                    b.HasIndex("Id_Proveedor");
-
-                    b.ToTable("Producto_Proveedors");
-                });
-
             modelBuilder.Entity("Programacion_1.Models.Proveedor", b =>
                 {
                     b.Property<int>("Id_Proveedor")
@@ -156,6 +156,19 @@ namespace Programacion_1.Migrations
                     b.ToTable("Proveedors");
                 });
 
+            modelBuilder.Entity("Programacion_1.Models.Inventario", b =>
+                {
+                    b.HasOne("Programacion_1.Models.Producto", "Producto")
+                        .WithMany("Inventarios")
+                        .HasForeignKey("Id_Producto")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Programacion_1.Models.Proveedor", "Proveedor")
+                        .WithMany("Inventarios")
+                        .HasForeignKey("Id_Proveedor")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Programacion_1.Models.Producto", b =>
                 {
                     b.HasOne("Programacion_1.Models.Categoria", "Categoria")
@@ -166,19 +179,6 @@ namespace Programacion_1.Migrations
                     b.HasOne("Programacion_1.Models.Marca", "Marca")
                         .WithMany("Productos")
                         .HasForeignKey("Id_Marca")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Programacion_1.Models.Producto_Proveedor", b =>
-                {
-                    b.HasOne("Programacion_1.Models.Producto", "Producto")
-                        .WithMany("Producto_Proveedores")
-                        .HasForeignKey("Id_Producto")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Programacion_1.Models.Proveedor", "Proveedor")
-                        .WithMany("Producto_Proveedores")
-                        .HasForeignKey("Id_Proveedor")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

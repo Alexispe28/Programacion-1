@@ -15,7 +15,7 @@ namespace Programacion_1.Models
         [Required]
         public string Detalles { get; set; }
         public string Direccion { get; set; }
-        public List<Producto_Proveedor> Producto_Proveedores { get; set; }
+        public List<Inventario> Inventarios { get; set; }
     }
 }
     

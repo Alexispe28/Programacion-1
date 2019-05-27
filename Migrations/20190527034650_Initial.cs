@@ -113,7 +113,7 @@ namespace Programacion_1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Producto_Proveedors",
+                name: "Inventarios",
                 columns: table => new
                 {
                     Id_Producto = table.Column<int>(nullable: false),
@@ -124,15 +124,15 @@ namespace Programacion_1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Producto_Proveedors", x => new { x.Id_Producto, x.Id_Proveedor });
+                    table.PrimaryKey("PK_Inventarios", x => new { x.Id_Producto, x.Id_Proveedor });
                     table.ForeignKey(
-                        name: "FK_Producto_Proveedors_Productos_Id_Producto",
+                        name: "FK_Inventarios_Productos_Id_Producto",
                         column: x => x.Id_Producto,
                         principalTable: "Productos",
                         principalColumn: "Id_Producto",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Producto_Proveedors_Proveedors_Id_Proveedor",
+                        name: "FK_Inventarios_Proveedors_Id_Proveedor",
                         column: x => x.Id_Proveedor,
                         principalTable: "Proveedors",
                         principalColumn: "Id_Proveedor",
@@ -140,8 +140,8 @@ namespace Programacion_1.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Producto_Proveedors_Id_Proveedor",
-                table: "Producto_Proveedors",
+                name: "IX_Inventarios_Id_Proveedor",
+                table: "Inventarios",
                 column: "Id_Proveedor");
 
             migrationBuilder.CreateIndex(
@@ -164,7 +164,7 @@ namespace Programacion_1.Migrations
                 name: "Facturas");
 
             migrationBuilder.DropTable(
-                name: "Producto_Proveedors");
+                name: "Inventarios");
 
             migrationBuilder.DropTable(
                 name: "Productos");

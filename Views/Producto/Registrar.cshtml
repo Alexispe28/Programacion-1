@@ -3,6 +3,7 @@
     var categorias = (List<Categoria>)ViewBag.Categoria;
     var marcas = (List<Marca>)ViewBag.Marca;
 }
+
 <h1>Registrar Producto</h1>
 
 <form action="/producto/registrar" method="post">
@@ -21,7 +22,7 @@
 
 <div class="form-group">
     <label>Categoria:</label>
-    <select class="form-control" asp-for="Id_Categoria">
+    <select asp-for="Id_Categoria">
         @foreach(var c in categorias){
             <option value="@c.Id_Categoria">@c.Nombre</option>
         }
@@ -30,7 +31,7 @@
 
 <div class="form-group">
     <label>Marca:</label>
-    <select class="form-control" asp-for="Id_Marca">
+    <select asp-for="Id_Marca">
         @foreach(var m in marcas){
             <option value="@m.Id_Marca">@m.Nombre</option>
         }
