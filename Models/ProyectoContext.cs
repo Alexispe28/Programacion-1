@@ -10,14 +10,12 @@ namespace Programacion_1.Models
         public DbSet<Marca> Marcas { get; set; } 
         public DbSet<Cliente> Clientes { get; set; } 
         public DbSet<Factura> Facturas { get; set; } 
-        public DbSet<Inventario> Inventarios { get; set; } 
+        public DbSet<Inventario> Inventarios { get; set; }
+        public DbSet<GuiaDeRemision> GuiaDeRemisions { get; set; }
         public ProyectoContext(DbContextOptions<ProyectoContext> options):base(options){
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
-            modelBuilder.Entity<Inventario>()
-            .HasKey(c => new { c.Id_Producto, c.Id_Proveedor });
             //Foreign Key Producto
             modelBuilder.Entity<Producto>().HasOne<Categoria>(s => s.Categoria)
             .WithMany(p => p.Productos).HasForeignKey(p => p.Id_Categoria);
@@ -28,6 +26,8 @@ namespace Programacion_1.Models
             .WithMany(p => p.Inventarios).HasForeignKey(p => p.Id_Producto);
             modelBuilder.Entity<Inventario>().HasOne<Proveedor>(s => s.Proveedor)
             .WithMany(p => p.Inventarios).HasForeignKey(p => p.Id_Proveedor);
+            modelBuilder.Entity<Inventario>().HasOne<GuiaDeRemision>(s => s.GuiaDeRemision)
+            .WithMany(p => p.Inventarios).HasForeignKey(p => p.Id_Guia_Remision);
         }
     }
 }

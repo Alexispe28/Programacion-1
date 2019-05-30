@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Programacion_1.Migrations
@@ -52,6 +53,20 @@ namespace Programacion_1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Facturas", x => x.Id_Factura);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GuiaDeRemisions",
+                columns: table => new
+                {
+                    Id_Guia_Remision = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Fecha_de_Llegada = table.Column<DateTime>(nullable: false),
+                    Total = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GuiaDeRemisions", x => x.Id_Guia_Remision);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,15 +131,23 @@ namespace Programacion_1.Migrations
                 name: "Inventarios",
                 columns: table => new
                 {
+                    Id_Inventario = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id_Guia_Remision = table.Column<int>(nullable: false),
                     Id_Producto = table.Column<int>(nullable: false),
                     Id_Proveedor = table.Column<int>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false),
-                    Fecha_de_Entrega = table.Column<string>(nullable: false),
-                    Fecha_de_Salida = table.Column<string>(nullable: false)
+                    subTotal = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Inventarios", x => new { x.Id_Producto, x.Id_Proveedor });
+                    table.PrimaryKey("PK_Inventarios", x => x.Id_Inventario);
+                    table.ForeignKey(
+                        name: "FK_Inventarios_GuiaDeRemisions_Id_Guia_Remision",
+                        column: x => x.Id_Guia_Remision,
+                        principalTable: "GuiaDeRemisions",
+                        principalColumn: "Id_Guia_Remision",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Inventarios_Productos_Id_Producto",
                         column: x => x.Id_Producto,
@@ -138,6 +161,16 @@ namespace Programacion_1.Migrations
                         principalColumn: "Id_Proveedor",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Inventarios_Id_Guia_Remision",
+                table: "Inventarios",
+                column: "Id_Guia_Remision");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Inventarios_Id_Producto",
+                table: "Inventarios",
+                column: "Id_Producto");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Inventarios_Id_Proveedor",
@@ -165,6 +198,9 @@ namespace Programacion_1.Migrations
 
             migrationBuilder.DropTable(
                 name: "Inventarios");
+
+            migrationBuilder.DropTable(
+                name: "GuiaDeRemisions");
 
             migrationBuilder.DropTable(
                 name: "Productos");
