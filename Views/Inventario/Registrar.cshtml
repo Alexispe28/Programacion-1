@@ -73,6 +73,7 @@
         var cantidad = document.getElementById("Cantidad").value;
         var preU = document.getElementById("Precio").value;
         var subT = (preU * cantidad) / 1.0;
+        subT = parseFloat(subT).toFixed(2);
         if(Codigos.indexOf(codigo)>=0){
             alert("Ya esta en la tabla. Tendra que actualizarlo. Indice numero: " + Codigos.indexOf(codigo));
         }
@@ -102,9 +103,9 @@
                 "</td>" +
                 "</tr>"
             );
-            total += subTs[i];
+            total += subTs[i] * 1.0;
         }
-        document.getElementById("Total").value = parseFloat(total).toFixed(2);
+        document.getElementById("Total").value = parseFloat(total);
         //document.getElementById("count").innerHTML = count[i];
     }
     //---------------
@@ -139,7 +140,7 @@
                     "</td>" +
                     "</tr>"
                 );
-                total += subTs[i];
+                total += subTs[i] * 1.0;
             }
         } else {
             var total = 0;
@@ -189,11 +190,11 @@
                     "</td>" +
                     "</tr>"
                 );
-                total += subTs[i];
+                total += subTs[i] * 1.0;
             }
             //alert(repnombres);
         }
-        document.getElementById("Total").value = parseFloat(total).toFixed(2);
+        document.getElementById("Total").value = parseFloat(total);
         //document.getElementById("count").innerHTML = count[i];
     }
     //-----------------

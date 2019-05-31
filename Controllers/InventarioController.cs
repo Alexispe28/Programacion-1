@@ -43,17 +43,16 @@ namespace Programacion_1.Models
             datosProducto[4] = producto.Precio.ToString();
             return Json(datosProducto);
         }
-        public int RegistrarGuia(string fchLlegada,string total){
+        public int RegistrarGuia(string fchLlegada,decimal total){
             GuiaDeRemision guiaRemision = new GuiaDeRemision();
             guiaRemision.Fecha_de_Llegada = DateTime.Parse(fchLlegada);
-            guiaRemision.Total = Math.Round(decimal.Parse(total),2);
+            guiaRemision.Total = total;
             _context.GuiaDeRemisions.Add(guiaRemision);
             _context.SaveChanges();
             return _context.GuiaDeRemisions.FirstOrDefault(x => x.Fecha_de_Llegada == guiaRemision.Fecha_de_Llegada).Id_Guia_Remision;
         }
         public JsonResult registrarInventario(string row, string fchLlegada, string codProv,string total)
         {
-            int id_Guia_Remision = RegistrarGuia(fchLlegada,total);
             var stringifiedTable = row.Split('-');
             List<string> codigo = new List<string>();
             List<string> cantidad = new List<string>();
@@ -71,6 +70,11 @@ namespace Programacion_1.Models
                 subtotal.Add(stringifiedTable[i]);
             }
             List<Inventario> inventario = new List<Inventario>();
+            decimal ValorTotal = 0;
+            for(int i = 0; i < codigo.Count() - 1; i++){
+                ValorTotal += decimal.Parse(subtotal[i])/100;
+            }
+            int id_Guia_Remision = RegistrarGuia(fchLlegada,ValorTotal);
             for(int i = 0; i < codigo.Count() - 1; i++)
             {
                 Inventario inventario1 = new Inventario();
@@ -78,7 +82,7 @@ namespace Programacion_1.Models
                 inventario1.Id_Proveedor = int.Parse(codProv);
                 inventario1.Id_Guia_Remision = id_Guia_Remision;
                 inventario1.Cantidad = int.Parse(cantidad[i]);
-                inventario1.subTotal = Math.Round(decimal.Parse(subtotal[i]),2);
+                inventario1.subTotal = decimal.Parse(subtotal[i])/100;
                 inventario.Add(inventario1);
             }
             _context.Inventarios.AddRange(inventario);
