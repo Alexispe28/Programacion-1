@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Programacion_1.Models
 {
-    public class ProyectoContext: DbContext
+    public class ProyectoContext: IdentityDbContext
     {
         public DbSet<Producto> Productos { get; set; } 
         public DbSet<Categoria> Categorias { get; set; }
@@ -17,6 +18,7 @@ namespace Programacion_1.Models
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             //Foreign Key Producto
             modelBuilder.Entity<Producto>().HasOne<Categoria>(s => s.Categoria)
             .WithMany(p => p.Productos).HasForeignKey(p => p.Id_Categoria);

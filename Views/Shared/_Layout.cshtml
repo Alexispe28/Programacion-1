@@ -46,6 +46,20 @@
                                 <li><a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="Listar">Producto</a></li>
                             </ul>
                         </li>
+                        @if (Context.User.Identity.IsAuthenticated) {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar sesión</a>
+                            </li>
+                        }
+                        else {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Crear cuenta</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Iniciar sesión</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>

@@ -47,3 +47,5 @@ C:\Users\Yayo\Documents\Programacion-1\bin\Debug\netcoreapp2.2\Programacion-1.Vi
 C:\Users\Yayo\Documents\Programacion-1\bin\Debug\netcoreapp2.2\Programacion-1.Views.pdb
 C:\Users\Yayo\Documents\Programacion-1\obj\Debug\netcoreapp2.2\Programacion-1.Views.pdb
 C:\Users\Yayo\Documents\Programacion-1\obj\Debug\netcoreapp2.2\Programacion-1.csproj.CopyComplete
+C:\Users\Yayo\Documents\Programacion-1\obj\Debug\netcoreapp2.2\Razor\Views\Account\Login.g.cshtml.cs
+C:\Users\Yayo\Documents\Programacion-1\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.g.cshtml.cs
