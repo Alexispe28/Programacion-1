@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Programacion_1.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -43,15 +44,30 @@ namespace Programacion_1.Models
             datosProducto[4] = producto.Precio.ToString();
             return Json(datosProducto);
         }
-        public int RegistrarGuia(string fchLlegada,decimal total){
-            GuiaDeRemision guiaRemision = new GuiaDeRemision();
+        public int RegistrarGuia(string fchLlegada,decimal total,int codProv){
+            Guia_de_Remision guiaRemision = new Guia_de_Remision();
             guiaRemision.Fecha_de_Llegada = DateTime.Parse(fchLlegada);
+            guiaRemision.Id_Proveedor = codProv;
             guiaRemision.Total = total;
-            _context.GuiaDeRemisions.Add(guiaRemision);
+            _context.Guia_de_Remisions.Add(guiaRemision);
             _context.SaveChanges();
-            return _context.GuiaDeRemisions.FirstOrDefault(x => x.Fecha_de_Llegada == guiaRemision.Fecha_de_Llegada).Id_Guia_Remision;
+            return _context.Guia_de_Remisions.FirstOrDefault(x => x.Fecha_de_Llegada == guiaRemision.Fecha_de_Llegada).Id_Guia_de_Remision;
         }
-        public JsonResult registrarInventario(string row, string fchLlegada, string codProv,string total)
+         public void RegistrarInventario(int id_Guia_de_Remision)
+         {
+             var Items = _context.Guia_de_Remision_Items
+            .Where(x => x.Id_Guia_de_Remision == id_Guia_de_Remision).ToList();
+             List<Inventario> inventarios = new List<Inventario>();
+             foreach(var e in Items){
+                Inventario inventario = new Inventario();
+                inventario.Id_Producto = e.Id_Producto;
+                inventario.Cantidad_Total = e.Cantidad;
+                inventarios.Add(inventario);
+             }
+             _context.Inventarios.AddRange(inventarios);
+             _context.SaveChanges();
+         }
+        public JsonResult registrarGuiaRemision(string row, string fchLlegada, string codProv,string total)
         {
             var stringifiedTable = row.Split('-');
             List<string> codigo = new List<string>();
@@ -69,25 +85,41 @@ namespace Programacion_1.Models
             {
                 subtotal.Add(stringifiedTable[i]);
             }
-            List<Inventario> inventario = new List<Inventario>();
+            List<Guia_de_Remision_Item> GuiadeRemisionItem = new List<Guia_de_Remision_Item>();
             decimal ValorTotal = 0;
             for(int i = 0; i < codigo.Count() - 1; i++){
                 ValorTotal += decimal.Parse(subtotal[i])/100;
             }
-            int id_Guia_Remision = RegistrarGuia(fchLlegada,ValorTotal);
+            int id_Guia_de_Remision = RegistrarGuia(fchLlegada,ValorTotal,int.Parse(codProv));
             for(int i = 0; i < codigo.Count() - 1; i++)
             {
-                Inventario inventario1 = new Inventario();
-                inventario1.Id_Producto = int.Parse(codigo[i]);
-                inventario1.Id_Proveedor = int.Parse(codProv);
-                inventario1.Id_Guia_Remision = id_Guia_Remision;
-                inventario1.Cantidad = int.Parse(cantidad[i]);
-                inventario1.subTotal = decimal.Parse(subtotal[i])/100;
-                inventario.Add(inventario1);
+                Guia_de_Remision_Item Guia_de_Remision_Item1 = new Guia_de_Remision_Item();
+                Guia_de_Remision_Item1.Id_Producto = int.Parse(codigo[i]);
+                Guia_de_Remision_Item1.Id_Guia_de_Remision = id_Guia_de_Remision;
+                Guia_de_Remision_Item1.Cantidad = int.Parse(cantidad[i]);
+                Guia_de_Remision_Item1.subTotal = decimal.Parse(subtotal[i])/100;
+                GuiadeRemisionItem.Add(Guia_de_Remision_Item1);
             }
-            _context.Inventarios.AddRange(inventario);
+            _context.Guia_de_Remision_Items.AddRange(GuiadeRemisionItem);
             _context.SaveChanges();
+            RegistrarInventario(id_Guia_de_Remision);
             return Json("Se ha registrado");
+        }
+        public IActionResult Listar()
+        {
+            var GuiaDeRemisions = _context.Guia_de_Remisions.Include(x => x.Proveedor).ToList();
+            return View(GuiaDeRemisions);
+        }
+        public IActionResult Detalles(int id)
+        {
+            var p = _context.Guia_de_Remisions.Include(s => s.Proveedor).FirstOrDefault(x => x.Id_Guia_de_Remision == id);
+            
+            if (p == null) {
+                return NotFound();
+            }
+            ViewBag.Guia_de_Remision_Items = _context.Guia_de_Remision_Items.Include(m => m.Producto)
+            .Where(x => x.Id_Guia_de_Remision == id).ToList();
+            return View(p);
         }
     }
 }

@@ -1,0 +1,32 @@
+@model List<Guia_de_Remision>
+
+<h1>Lista de Guia De Remision</h1>
+
+<table class="table">
+    <tr>
+        <th>Código</th>
+        <th>Proveedor</th>
+        <th>Fecha de Llegada</th>
+        <th>Total</th>
+        <th>Opciones</th>
+    </tr>
+
+    @foreach(var p in Model) {
+        <tr>
+            <td>@p.Id_Guia_de_Remision</td>
+            <td>@p.Proveedor.Nombre</td>
+            <td>@p.Fecha_de_Llegada</td>
+            <td>@p.Total</td>
+            <td>
+                <a href="~/inventario/detalles/@p.Id_Guia_de_Remision" 
+                class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-edit"></a> | 
+                <a href="~/inventario/eliminar/@p.Id_Guia_de_Remision" 
+                class="btn btn-danger a-btn-slide-text"><span class="glyphicon glyphicon-remove"></a>
+            </td>
+        </tr>
+    }
+    
+
+</table>
+<a href="~/categoria/registrar" 
+class="btn btn-primary a-btn-slide-text">Nueva Categoria</a>

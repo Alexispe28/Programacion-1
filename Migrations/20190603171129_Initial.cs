@@ -56,20 +56,6 @@ namespace Programacion_1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GuiaDeRemisions",
-                columns: table => new
-                {
-                    Id_Guia_Remision = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Fecha_de_Llegada = table.Column<DateTime>(nullable: false),
-                    Total = table.Column<decimal>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GuiaDeRemisions", x => x.Id_Guia_Remision);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Marcas",
                 columns: table => new
                 {
@@ -128,54 +114,93 @@ namespace Programacion_1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Inventarios",
+                name: "Guia_de_Remisions",
                 columns: table => new
                 {
-                    Id_Inventario = table.Column<int>(nullable: false)
+                    Id_Guia_de_Remision = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Id_Guia_Remision = table.Column<int>(nullable: false),
-                    Id_Producto = table.Column<int>(nullable: false),
                     Id_Proveedor = table.Column<int>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false),
-                    subTotal = table.Column<decimal>(nullable: false)
+                    Fecha_de_Llegada = table.Column<DateTime>(nullable: false),
+                    Total = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Inventarios", x => x.Id_Inventario);
+                    table.PrimaryKey("PK_Guia_de_Remisions", x => x.Id_Guia_de_Remision);
                     table.ForeignKey(
-                        name: "FK_Inventarios_GuiaDeRemisions_Id_Guia_Remision",
-                        column: x => x.Id_Guia_Remision,
-                        principalTable: "GuiaDeRemisions",
-                        principalColumn: "Id_Guia_Remision",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Inventarios_Productos_Id_Producto",
-                        column: x => x.Id_Producto,
-                        principalTable: "Productos",
-                        principalColumn: "Id_Producto",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Inventarios_Proveedors_Id_Proveedor",
+                        name: "FK_Guia_de_Remisions_Proveedors_Id_Proveedor",
                         column: x => x.Id_Proveedor,
                         principalTable: "Proveedors",
                         principalColumn: "Id_Proveedor",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Inventarios",
+                columns: table => new
+                {
+                    Id_Inventario = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id_Producto = table.Column<int>(nullable: false),
+                    Cantidad_Total = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Inventarios", x => x.Id_Inventario);
+                    table.ForeignKey(
+                        name: "FK_Inventarios_Productos_Id_Producto",
+                        column: x => x.Id_Producto,
+                        principalTable: "Productos",
+                        principalColumn: "Id_Producto",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Guia_de_Remision_Items",
+                columns: table => new
+                {
+                    Id_Guia_de_Remision_Item = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id_Guia_de_Remision = table.Column<int>(nullable: false),
+                    Id_Producto = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    subTotal = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Guia_de_Remision_Items", x => x.Id_Guia_de_Remision_Item);
+                    table.ForeignKey(
+                        name: "FK_Guia_de_Remision_Items_Guia_de_Remisions_Id_Guia_de_Remision",
+                        column: x => x.Id_Guia_de_Remision,
+                        principalTable: "Guia_de_Remisions",
+                        principalColumn: "Id_Guia_de_Remision",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Guia_de_Remision_Items_Productos_Id_Producto",
+                        column: x => x.Id_Producto,
+                        principalTable: "Productos",
+                        principalColumn: "Id_Producto",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Inventarios_Id_Guia_Remision",
-                table: "Inventarios",
-                column: "Id_Guia_Remision");
+                name: "IX_Guia_de_Remision_Items_Id_Guia_de_Remision",
+                table: "Guia_de_Remision_Items",
+                column: "Id_Guia_de_Remision");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Guia_de_Remision_Items_Id_Producto",
+                table: "Guia_de_Remision_Items",
+                column: "Id_Producto");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Guia_de_Remisions_Id_Proveedor",
+                table: "Guia_de_Remisions",
+                column: "Id_Proveedor");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Inventarios_Id_Producto",
                 table: "Inventarios",
                 column: "Id_Producto");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Inventarios_Id_Proveedor",
-                table: "Inventarios",
-                column: "Id_Proveedor");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Productos_Id_Categoria",
@@ -197,10 +222,13 @@ namespace Programacion_1.Migrations
                 name: "Facturas");
 
             migrationBuilder.DropTable(
+                name: "Guia_de_Remision_Items");
+
+            migrationBuilder.DropTable(
                 name: "Inventarios");
 
             migrationBuilder.DropTable(
-                name: "GuiaDeRemisions");
+                name: "Guia_de_Remisions");
 
             migrationBuilder.DropTable(
                 name: "Productos");

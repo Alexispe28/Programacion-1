@@ -9,7 +9,7 @@ using Programacion_1.Models;
 namespace Programacion_1.Migrations
 {
     [DbContext(typeof(ProyectoContext))]
-    [Migration("20190529163323_Initial")]
+    [Migration("20190603171129_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,18 +75,44 @@ namespace Programacion_1.Migrations
                     b.ToTable("Facturas");
                 });
 
-            modelBuilder.Entity("Programacion_1.Models.GuiaDeRemision", b =>
+            modelBuilder.Entity("Programacion_1.Models.Guia_de_Remision", b =>
                 {
-                    b.Property<int>("Id_Guia_Remision")
+                    b.Property<int>("Id_Guia_de_Remision")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Fecha_de_Llegada");
 
+                    b.Property<int>("Id_Proveedor");
+
                     b.Property<decimal>("Total");
 
-                    b.HasKey("Id_Guia_Remision");
+                    b.HasKey("Id_Guia_de_Remision");
 
-                    b.ToTable("GuiaDeRemisions");
+                    b.HasIndex("Id_Proveedor");
+
+                    b.ToTable("Guia_de_Remisions");
+                });
+
+            modelBuilder.Entity("Programacion_1.Models.Guia_de_Remision_Item", b =>
+                {
+                    b.Property<int>("Id_Guia_de_Remision_Item")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Cantidad");
+
+                    b.Property<int>("Id_Guia_de_Remision");
+
+                    b.Property<int>("Id_Producto");
+
+                    b.Property<decimal>("subTotal");
+
+                    b.HasKey("Id_Guia_de_Remision_Item");
+
+                    b.HasIndex("Id_Guia_de_Remision");
+
+                    b.HasIndex("Id_Producto");
+
+                    b.ToTable("Guia_de_Remision_Items");
                 });
 
             modelBuilder.Entity("Programacion_1.Models.Inventario", b =>
@@ -94,23 +120,13 @@ namespace Programacion_1.Migrations
                     b.Property<int>("Id_Inventario")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Cantidad");
-
-                    b.Property<int>("Id_Guia_Remision");
+                    b.Property<int>("Cantidad_Total");
 
                     b.Property<int>("Id_Producto");
 
-                    b.Property<int>("Id_Proveedor");
-
-                    b.Property<decimal>("subTotal");
-
                     b.HasKey("Id_Inventario");
 
-                    b.HasIndex("Id_Guia_Remision");
-
                     b.HasIndex("Id_Producto");
-
-                    b.HasIndex("Id_Proveedor");
 
                     b.ToTable("Inventarios");
                 });
@@ -176,21 +192,32 @@ namespace Programacion_1.Migrations
                     b.ToTable("Proveedors");
                 });
 
-            modelBuilder.Entity("Programacion_1.Models.Inventario", b =>
+            modelBuilder.Entity("Programacion_1.Models.Guia_de_Remision", b =>
                 {
-                    b.HasOne("Programacion_1.Models.GuiaDeRemision", "GuiaDeRemision")
-                        .WithMany("Inventarios")
-                        .HasForeignKey("Id_Guia_Remision")
+                    b.HasOne("Programacion_1.Models.Proveedor", "Proveedor")
+                        .WithMany("Guia_de_Remisions")
+                        .HasForeignKey("Id_Proveedor")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Programacion_1.Models.Guia_de_Remision_Item", b =>
+                {
+                    b.HasOne("Programacion_1.Models.Guia_de_Remision", "Guia_de_Remision")
+                        .WithMany("Guia_de_Remision_Items")
+                        .HasForeignKey("Id_Guia_de_Remision")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Programacion_1.Models.Producto", "Producto")
-                        .WithMany("Inventarios")
+                        .WithMany("Guia_de_Remision_Items")
                         .HasForeignKey("Id_Producto")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.HasOne("Programacion_1.Models.Proveedor", "Proveedor")
+            modelBuilder.Entity("Programacion_1.Models.Inventario", b =>
+                {
+                    b.HasOne("Programacion_1.Models.Producto", "Producto")
                         .WithMany("Inventarios")
-                        .HasForeignKey("Id_Proveedor")
+                        .HasForeignKey("Id_Producto")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

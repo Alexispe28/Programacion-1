@@ -1,0 +1,28 @@
+@model Guia_de_Remision
+@{
+    var Guia_de_Remision_Item = (List<Guia_de_Remision_Item>)ViewBag.Guia_de_Remision_Items;
+}
+<h1>Detalles de la Boleta</h1>
+
+<p>Proveedor: @Model.Proveedor.Nombre</p>
+<p>Numero de Guia de Remision: @Model.Id_Guia_de_Remision</p>
+<p>Fecha de Llegada: @Model.Fecha_de_Llegada</p>
+
+ <table class="table">
+    <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+    </tr>
+
+    @foreach(var p in Guia_de_Remision_Item) {
+        <tr>
+            <td>@p.Producto.Nombre</td>
+            <td>@p.Producto.Precio</td>
+            <td>@p.Cantidad</td>
+            <td>@p.subTotal</td>
+        </tr>
+    }
+</table>
+<p>Total: @Model.Total</p>

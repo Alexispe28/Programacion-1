@@ -210,7 +210,7 @@
         $(document).ready(function () {
             $.ajax({
                 type: "GET",
-                url: '@Url.Action("registrarInventario", "Inventario")',
+                url: '@Url.Action("registrarGuiaRemision", "Inventario")',
                 data: { row: rows, fchLlegada:fechaLlegada, codProv: codigoProveedor, total: Total},
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
