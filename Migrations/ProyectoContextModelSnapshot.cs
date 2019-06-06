@@ -183,7 +183,8 @@ namespace Programacion_1.Migrations
                     b.Property<int>("Id_Categoria")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nombre");
+                    b.Property<string>("Nombre")
+                        .IsRequired();
 
                     b.HasKey("Id_Categoria");
 

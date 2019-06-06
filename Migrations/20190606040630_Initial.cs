@@ -53,7 +53,7 @@ namespace Programacion_1.Migrations
                 {
                     Id_Categoria = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nombre = table.Column<string>(nullable: true)
+                    Nombre = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
