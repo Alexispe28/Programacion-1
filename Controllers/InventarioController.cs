@@ -123,8 +123,19 @@ namespace Programacion_1.Models
         }
         public IActionResult VerInventario()
         {
-            var inv = _context.Inventarios.Include(y => y.Producto).ToList();
-            inv.GroupBy(x => x.Id_Producto);
+            //int producto = _context.Inventarios.Include(y => y.Producto).Select(x => x.Id_Producto).Distinct().Count();
+            List<Inventario> inv = new List<Inventario>();
+            //for(int i = 0; i < producto;i++){
+            foreach(var e in _context.Inventarios.Include(x => x.Producto).ToList())
+            {
+                Inventario inventario = new Inventario();
+                inventario.Producto = _context.Productos.Find(e.Id_Producto);
+                inventario.Cantidad_Total = _context.Inventarios.Where(a => a.Id_Producto == e.Id_Producto).Sum(m => m.Cantidad_Total);
+                if(inv.FirstOrDefault(x => x.Producto == e.Producto) == null){
+                    inv.Add(inventario);
+                }
+            }
+            
             return View(inv);
         }
     }
