@@ -6,13 +6,13 @@
 
     <div asp-validation-summary="All"></div>
 
-    <div>
-        Nombre de usuario: <input asp-for="Usuario">
+    <div class="form-group">
+        <label>Nombre de usuario:</label> 
+        <input class="form-control" asp-for="Usuario">
     </div>
-    <div>
-        Password: <input asp-for="Password">
+    <div class="form-group">
+        <label>Password:</label>
+        <input class="form-control" asp-for="Password">
     </div>
-
-    <button>Iniciar sesión</button>
-
+    <button class="btn btn-primary">Iniciar sesión</button>
 </form>
