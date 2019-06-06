@@ -8,6 +8,7 @@ namespace Programacion_1.Models
     {
         [Key]
         public int Id_Inventario { get; set; }
+        [Required]
         public int Id_Producto { get; set; }
         public Producto Producto { get; set; }
         [Required]

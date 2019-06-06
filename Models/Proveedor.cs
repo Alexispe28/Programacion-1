@@ -14,6 +14,7 @@ namespace Programacion_1.Models
         public string Numero_Telefonico { get; set; }
         [Required]
         public string Detalles { get; set; }
+        [Required]
         public string Direccion { get; set; }
         public List<Guia_de_Remision> Guia_de_Remisions { get; set; }
     }
