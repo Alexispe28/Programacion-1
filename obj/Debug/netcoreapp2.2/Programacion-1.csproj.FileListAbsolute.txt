@@ -100,3 +100,6 @@ C:/Users/Yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Accou
 /home/yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.dll
 /home/yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.pdb
 /home/yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Programacion-1.csproj.CopyComplete
+/home/yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Cliente/Actualizar.g.cshtml.cs
+/home/yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Cliente/Listar.g.cshtml.cs
+/home/yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Cliente/Registrar.g.cshtml.cs

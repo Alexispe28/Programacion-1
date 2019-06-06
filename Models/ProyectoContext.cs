@@ -40,6 +40,16 @@ namespace Programacion_1.Models
             //Foreign Key Guia_de_Remision
             modelBuilder.Entity<Guia_de_Remision>().HasOne<Proveedor>(s => s.Proveedor)
             .WithMany(p => p.Guia_de_Remisions).HasForeignKey(p => p.Id_Proveedor);
+            
+            //Foreign Key Factura
+            modelBuilder.Entity<Factura>().HasOne<Cliente>(s => s.Cliente)
+            .WithMany(p => p.Facturas).HasForeignKey(p => p.Id_Cliente);
+            
+            //Foreign Key Factura_Item
+            modelBuilder.Entity<Factura_Item>().HasOne<Factura>(s => s.Factura)
+            .WithMany(p => p.Factura_Items).HasForeignKey(p => p.Id_Factura_Item);
+            modelBuilder.Entity<Factura_Item>().HasOne<Producto>(s => s.Producto)
+            .WithMany(p => p.Factura_Items).HasForeignKey(p => p.Id_Producto);
         }
     }
 }

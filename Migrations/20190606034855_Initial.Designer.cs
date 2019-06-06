@@ -9,7 +9,7 @@ using Programacion_1.Models;
 namespace Programacion_1.Migrations
 {
     [DbContext(typeof(ProyectoContext))]
-    [Migration("20190603180443_Initial")]
+    [Migration("20190606034855_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -219,21 +219,37 @@ namespace Programacion_1.Migrations
                     b.Property<int>("Id_Factura")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Cantidad");
-
-                    b.Property<string>("Fecha_Realizada");
+                    b.Property<string>("Fecha_Realizada")
+                        .IsRequired();
 
                     b.Property<int>("Id_Cliente");
-
-                    b.Property<int>("Id_Producto");
-
-                    b.Property<decimal>("Subtotal");
 
                     b.Property<decimal>("Total");
 
                     b.HasKey("Id_Factura");
 
+                    b.HasIndex("Id_Cliente");
+
                     b.ToTable("Facturas");
+                });
+
+            modelBuilder.Entity("Programacion_1.Models.Factura_Item", b =>
+                {
+                    b.Property<int>("Id_Factura_Item");
+
+                    b.Property<int>("Cantidad");
+
+                    b.Property<int>("Id_Factura");
+
+                    b.Property<int>("Id_Producto");
+
+                    b.Property<decimal>("Subtotal");
+
+                    b.HasKey("Id_Factura_Item");
+
+                    b.HasIndex("Id_Producto");
+
+                    b.ToTable("Factura_Items");
                 });
 
             modelBuilder.Entity("Programacion_1.Models.Guia_de_Remision", b =>
@@ -395,6 +411,27 @@ namespace Programacion_1.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Programacion_1.Models.Factura", b =>
+                {
+                    b.HasOne("Programacion_1.Models.Cliente", "Cliente")
+                        .WithMany("Facturas")
+                        .HasForeignKey("Id_Cliente")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Programacion_1.Models.Factura_Item", b =>
+                {
+                    b.HasOne("Programacion_1.Models.Factura", "Factura")
+                        .WithMany("Factura_Items")
+                        .HasForeignKey("Id_Factura_Item")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Programacion_1.Models.Producto", "Producto")
+                        .WithMany("Factura_Items")
+                        .HasForeignKey("Id_Producto")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

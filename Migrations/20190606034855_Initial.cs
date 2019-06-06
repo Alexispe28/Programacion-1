@@ -77,24 +77,6 @@ namespace Programacion_1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Facturas",
-                columns: table => new
-                {
-                    Id_Factura = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Cantidad = table.Column<int>(nullable: false),
-                    Fecha_Realizada = table.Column<string>(nullable: true),
-                    Subtotal = table.Column<decimal>(nullable: false),
-                    Total = table.Column<decimal>(nullable: false),
-                    Id_Producto = table.Column<int>(nullable: false),
-                    Id_Cliente = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Facturas", x => x.Id_Factura);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Marcas",
                 columns: table => new
                 {
@@ -231,6 +213,27 @@ namespace Programacion_1.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Facturas",
+                columns: table => new
+                {
+                    Id_Factura = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Fecha_Realizada = table.Column<string>(nullable: false),
+                    Total = table.Column<decimal>(nullable: false),
+                    Id_Cliente = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Facturas", x => x.Id_Factura);
+                    table.ForeignKey(
+                        name: "FK_Facturas_Clientes_Id_Cliente",
+                        column: x => x.Id_Cliente,
+                        principalTable: "Clientes",
+                        principalColumn: "Id_Cliente",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Productos",
                 columns: table => new
                 {
@@ -276,6 +279,33 @@ namespace Programacion_1.Migrations
                         column: x => x.Id_Proveedor,
                         principalTable: "Proveedors",
                         principalColumn: "Id_Proveedor",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Factura_Items",
+                columns: table => new
+                {
+                    Id_Factura_Item = table.Column<int>(nullable: false),
+                    Id_Factura = table.Column<int>(nullable: false),
+                    Id_Producto = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    Subtotal = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Factura_Items", x => x.Id_Factura_Item);
+                    table.ForeignKey(
+                        name: "FK_Factura_Items_Facturas_Id_Factura_Item",
+                        column: x => x.Id_Factura_Item,
+                        principalTable: "Facturas",
+                        principalColumn: "Id_Factura",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Factura_Items_Productos_Id_Producto",
+                        column: x => x.Id_Producto,
+                        principalTable: "Productos",
+                        principalColumn: "Id_Producto",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -365,6 +395,16 @@ namespace Programacion_1.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Factura_Items_Id_Producto",
+                table: "Factura_Items",
+                column: "Id_Producto");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Facturas_Id_Cliente",
+                table: "Facturas",
+                column: "Id_Cliente");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Guia_de_Remision_Items_Id_Guia_de_Remision",
                 table: "Guia_de_Remision_Items",
                 column: "Id_Guia_de_Remision");
@@ -413,10 +453,7 @@ namespace Programacion_1.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Clientes");
-
-            migrationBuilder.DropTable(
-                name: "Facturas");
+                name: "Factura_Items");
 
             migrationBuilder.DropTable(
                 name: "Guia_de_Remision_Items");
@@ -431,10 +468,16 @@ namespace Programacion_1.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "Facturas");
+
+            migrationBuilder.DropTable(
                 name: "Guia_de_Remisions");
 
             migrationBuilder.DropTable(
                 name: "Productos");
+
+            migrationBuilder.DropTable(
+                name: "Clientes");
 
             migrationBuilder.DropTable(
                 name: "Proveedors");
