@@ -16,6 +16,7 @@ namespace Programacion_1.Models
         public Marca Marca { get; set; }
         public List<Guia_de_Remision_Item> Guia_de_Remision_Items { get; set; }
         public List<Inventario> Inventarios { get; set; }
+        public List<Factura_Item> Factura_Items { get; set; }
     }
     
 }

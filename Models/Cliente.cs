@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Programacion_1.Models
@@ -13,6 +14,7 @@ namespace Programacion_1.Models
         public string Correo { get; set; }
         [Required]
         public string Numero_Telefonico { get; set; }
+        public List<Factura> Facturas { get; set; }
     }
     
 }

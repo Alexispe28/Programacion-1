@@ -11,6 +11,7 @@ namespace Programacion_1.Models
         public DbSet<Marca> Marcas { get; set; } 
         public DbSet<Cliente> Clientes { get; set; } 
         public DbSet<Factura> Facturas { get; set; } 
+         public DbSet<Factura_Item> Factura_Items { get; set; } 
         public DbSet<Guia_de_Remision_Item> Guia_de_Remision_Items { get; set; }
         public DbSet<Guia_de_Remision> Guia_de_Remisions { get; set; }
         public DbSet<Inventario> Inventarios { get; set; }
