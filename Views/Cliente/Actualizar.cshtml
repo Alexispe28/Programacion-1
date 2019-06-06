@@ -12,6 +12,21 @@
     <input type="text" class="form-control" asp-for="Nombre" >
     @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
 </div>
+<div class="form-group">
+    <label>Apellido:</label>
+    <input type="text" class="form-control" asp-for="Apellido" >
+    @Html.ValidationMessageFor(m => m.Apellido, "", new { @class = "text-danger" })
+</div>
+<div class="form-group">
+    <label>Correo:</label>
+    <input type="text" class="form-control" asp-for="Correo" >
+    @Html.ValidationMessageFor(m => m.Correo, "", new { @class = "text-danger" })
+</div>
+<div class="form-group">
+    <label>Numero Telefonico:</label>
+    <input type="text" class="form-control" asp-for="Numero_Telefonico" >
+    @Html.ValidationMessageFor(m => m.Numero_Telefonico, "", new { @class = "text-danger" })
+</div>
 
 <button class="btn btn-primary">Actualizar</button>
 
