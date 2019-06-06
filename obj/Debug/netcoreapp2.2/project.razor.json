@@ -2899,6 +2899,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Inventario/VerInventario.cshtml",
+      "TargetPath": "Views/Inventario/VerInventario.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Account/Login.cshtml",
       "TargetPath": "Views/Account/Login.cshtml",
       "FileKind": "mvc"

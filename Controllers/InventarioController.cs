@@ -88,7 +88,7 @@ namespace Programacion_1.Models
             List<Guia_de_Remision_Item> GuiadeRemisionItem = new List<Guia_de_Remision_Item>();
             decimal ValorTotal = 0;
             for(int i = 0; i < codigo.Count() - 1; i++){
-                ValorTotal += decimal.Parse(subtotal[i])/100;
+                ValorTotal += decimal.Parse(subtotal[i]);
             }
             int id_Guia_de_Remision = RegistrarGuia(fchLlegada,ValorTotal,int.Parse(codProv));
             for(int i = 0; i < codigo.Count() - 1; i++)
@@ -97,7 +97,7 @@ namespace Programacion_1.Models
                 Guia_de_Remision_Item1.Id_Producto = int.Parse(codigo[i]);
                 Guia_de_Remision_Item1.Id_Guia_de_Remision = id_Guia_de_Remision;
                 Guia_de_Remision_Item1.Cantidad = int.Parse(cantidad[i]);
-                Guia_de_Remision_Item1.subTotal = decimal.Parse(subtotal[i])/100;
+                Guia_de_Remision_Item1.subTotal = decimal.Parse(subtotal[i]);
                 GuiadeRemisionItem.Add(Guia_de_Remision_Item1);
             }
             _context.Guia_de_Remision_Items.AddRange(GuiadeRemisionItem);
@@ -120,6 +120,12 @@ namespace Programacion_1.Models
             ViewBag.Guia_de_Remision_Items = _context.Guia_de_Remision_Items.Include(m => m.Producto)
             .Where(x => x.Id_Guia_de_Remision == id).ToList();
             return View(p);
+        }
+        public IActionResult VerInventario()
+        {
+            var inv = _context.Inventarios.Include(y => y.Producto).ToList();
+            inv.GroupBy(x => x.Id_Producto);
+            return View(inv);
         }
     }
 }

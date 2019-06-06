@@ -1,0 +1,17 @@
+@model List<Inventario>
+
+<h1>Inventario Actual</h1>
+
+ <table class="table">
+    <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+    </tr>
+
+    @foreach(var p in Model) {
+        <tr>
+            <td>@p.Producto.Nombre</td>
+            <td>@p.Cantidad_Total</td>
+        </tr>
+    }
+</table>
