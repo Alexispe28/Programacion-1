@@ -9,7 +9,7 @@ using Programacion_1.Models;
 namespace Programacion_1.Migrations
 {
     [DbContext(typeof(ProyectoContext))]
-    [Migration("20190606040630_Initial")]
+    [Migration("20190606180837_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
