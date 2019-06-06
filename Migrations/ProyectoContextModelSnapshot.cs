@@ -354,7 +354,8 @@ namespace Programacion_1.Migrations
                     b.Property<string>("Detalles")
                         .IsRequired();
 
-                    b.Property<string>("Direccion");
+                    b.Property<string>("Direccion")
+                        .IsRequired();
 
                     b.Property<string>("Nombre")
                         .IsRequired();

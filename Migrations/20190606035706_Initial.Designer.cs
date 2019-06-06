@@ -9,7 +9,7 @@ using Programacion_1.Models;
 namespace Programacion_1.Migrations
 {
     [DbContext(typeof(ProyectoContext))]
-    [Migration("20190606034855_Initial")]
+    [Migration("20190606035706_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -356,7 +356,8 @@ namespace Programacion_1.Migrations
                     b.Property<string>("Detalles")
                         .IsRequired();
 
-                    b.Property<string>("Direccion");
+                    b.Property<string>("Direccion")
+                        .IsRequired();
 
                     b.Property<string>("Nombre")
                         .IsRequired();

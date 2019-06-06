@@ -99,7 +99,7 @@ namespace Programacion_1.Migrations
                     Correo = table.Column<string>(nullable: false),
                     Numero_Telefonico = table.Column<string>(nullable: false),
                     Detalles = table.Column<string>(nullable: false),
-                    Direccion = table.Column<string>(nullable: true)
+                    Direccion = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
