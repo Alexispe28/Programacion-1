@@ -135,7 +135,6 @@ namespace Programacion_1.Models
                     inv.Add(inventario);
                 }
             }
-            
             return View(inv);
         }
     }
