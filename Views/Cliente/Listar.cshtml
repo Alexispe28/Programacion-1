@@ -1,0 +1,28 @@
+@model List<Cliente>
+
+<h1>Listado de Cliente</h1>
+
+<table class="table">
+    <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Opciones</th>
+    </tr>
+
+    @foreach(var c in Model) {
+        <tr>
+            <td>@c.Id_Cliente</td>
+            <td>@c.Nombre</td>
+            <td>
+                <a href="~/cliente/actualizar/@c.Id_Cliente" 
+                class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-edit"></a> | 
+                <a href="~/cliente/eliminar/@c.Id_Cliente" 
+                class="btn btn-danger a-btn-slide-text"><span class="glyphicon glyphicon-remove"></a>
+            </td>
+        </tr>
+    }
+    
+
+</table>
+<a href="~/cliente/registrar" 
+class="btn btn-primary a-btn-slide-text">Nueva Cliente</a>
