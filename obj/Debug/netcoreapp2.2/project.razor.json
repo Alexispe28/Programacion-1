@@ -2809,6 +2809,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Cliente/Actualizar.cshtml",
+      "TargetPath": "Views/Cliente/Actualizar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/_ViewImports.cshtml",
       "TargetPath": "Views/_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -2816,6 +2821,11 @@
     {
       "FilePath": "Views/Proveedor/Actualizar.cshtml",
       "TargetPath": "Views/Proveedor/Actualizar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Cliente/Registrar.cshtml",
+      "TargetPath": "Views/Cliente/Registrar.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2876,6 +2886,11 @@
     {
       "FilePath": "Views/Categoria/Eliminar.cshtml",
       "TargetPath": "Views/Categoria/Eliminar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Cliente/Listar.cshtml",
+      "TargetPath": "Views/Cliente/Listar.cshtml",
       "FileKind": "mvc"
     },
     {
