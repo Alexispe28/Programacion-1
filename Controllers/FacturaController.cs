@@ -106,5 +106,10 @@ namespace Programacion_1.Models
             RegistrarInventario(id_Factura);
             return Json("Se ha registrado");
         }
+        public IActionResult Listar()
+        {
+            var Facturas = _context.Facturas.Include(x => x.Cliente).ToList();
+            return View(Facturas);
+        }
     }
 }
