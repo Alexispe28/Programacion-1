@@ -47,7 +47,7 @@ namespace Programacion_1.Models
             
             //Foreign Key Factura_Item
             modelBuilder.Entity<Factura_Item>().HasOne<Factura>(s => s.Factura)
-            .WithMany(p => p.Factura_Items).HasForeignKey(p => p.Id_Factura_Item);
+            .WithMany(p => p.Factura_Items).HasForeignKey(p => p.Id_Factura);
             modelBuilder.Entity<Factura_Item>().HasOne<Producto>(s => s.Producto)
             .WithMany(p => p.Factura_Items).HasForeignKey(p => p.Id_Producto);
         }

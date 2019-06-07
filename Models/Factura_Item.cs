@@ -1,9 +1,11 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Programacion_1.Models
 {
     public class Factura_Item{
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id_Factura_Item { get; set; }
         [Required]
         public int Id_Factura { get; set; }

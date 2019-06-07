@@ -9,7 +9,7 @@ using Programacion_1.Models;
 namespace Programacion_1.Migrations
 {
     [DbContext(typeof(ProyectoContext))]
-    [Migration("20190606180837_Initial")]
+    [Migration("20190607083102_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -220,8 +220,7 @@ namespace Programacion_1.Migrations
                     b.Property<int>("Id_Factura")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Fecha_Realizada")
-                        .IsRequired();
+                    b.Property<DateTime>("Fecha_Realizada");
 
                     b.Property<int>("Id_Cliente");
 
@@ -236,7 +235,8 @@ namespace Programacion_1.Migrations
 
             modelBuilder.Entity("Programacion_1.Models.Factura_Item", b =>
                 {
-                    b.Property<int>("Id_Factura_Item");
+                    b.Property<int>("Id_Factura_Item")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("Cantidad");
 
@@ -247,6 +247,8 @@ namespace Programacion_1.Migrations
                     b.Property<decimal>("Subtotal");
 
                     b.HasKey("Id_Factura_Item");
+
+                    b.HasIndex("Id_Factura");
 
                     b.HasIndex("Id_Producto");
 
@@ -428,7 +430,7 @@ namespace Programacion_1.Migrations
                 {
                     b.HasOne("Programacion_1.Models.Factura", "Factura")
                         .WithMany("Factura_Items")
-                        .HasForeignKey("Id_Factura_Item")
+                        .HasForeignKey("Id_Factura")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Programacion_1.Models.Producto", "Producto")

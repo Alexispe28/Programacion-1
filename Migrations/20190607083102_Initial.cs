@@ -218,7 +218,7 @@ namespace Programacion_1.Migrations
                 {
                     Id_Factura = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Fecha_Realizada = table.Column<string>(nullable: false),
+                    Fecha_Realizada = table.Column<DateTime>(nullable: false),
                     Total = table.Column<decimal>(nullable: false),
                     Id_Cliente = table.Column<int>(nullable: false)
                 },
@@ -286,7 +286,8 @@ namespace Programacion_1.Migrations
                 name: "Factura_Items",
                 columns: table => new
                 {
-                    Id_Factura_Item = table.Column<int>(nullable: false),
+                    Id_Factura_Item = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Id_Factura = table.Column<int>(nullable: false),
                     Id_Producto = table.Column<int>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false),
@@ -296,8 +297,8 @@ namespace Programacion_1.Migrations
                 {
                     table.PrimaryKey("PK_Factura_Items", x => x.Id_Factura_Item);
                     table.ForeignKey(
-                        name: "FK_Factura_Items_Facturas_Id_Factura_Item",
-                        column: x => x.Id_Factura_Item,
+                        name: "FK_Factura_Items_Facturas_Id_Factura",
+                        column: x => x.Id_Factura,
                         principalTable: "Facturas",
                         principalColumn: "Id_Factura",
                         onDelete: ReferentialAction.Cascade);
@@ -393,6 +394,11 @@ namespace Programacion_1.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Factura_Items_Id_Factura",
+                table: "Factura_Items",
+                column: "Id_Factura");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Factura_Items_Id_Producto",

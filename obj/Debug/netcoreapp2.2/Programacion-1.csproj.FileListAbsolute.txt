@@ -105,3 +105,4 @@ C:/Users/Yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Accou
 /home/yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Cliente/Registrar.g.cshtml.cs
 /home/yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Cliente/Eliminar.g.cshtml.cs
 /home/yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Inventario/VerInventario.g.cshtml.cs
+/home/yayo/Documents/Programacion-1/obj/Debug/netcoreapp2.2/Razor/Views/Factura/Registrar.g.cshtml.cs

@@ -1,13 +1,16 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Programacion_1.Models
 {
     public class Factura{
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id_Factura { get; set; }
         [Required]
-        public string Fecha_Realizada { get; set; }
+        public DateTime Fecha_Realizada { get; set; }
         public decimal Total { get; set; }
         [Required]
         public int Id_Cliente { get; set; }
