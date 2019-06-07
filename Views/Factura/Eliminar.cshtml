@@ -1,0 +1,10 @@
+@model Factura
+
+<h1>Eliminar</h1>
+<p>¿Deseas Eliminar <strong>@Model.Id_Cliente</strong>?</p>
+
+<form action="~/factura/eliminar" method="post">
+    <input type="hidden" asp-for="Id_Factura">
+    <button class="btn btn btn-default">Si</button>
+    <a href="~/factura/listar" class="btn btn-default a-btn-slide-text">No</a>
+</form>

@@ -1,0 +1,10 @@
+@model Guia_de_Remision
+
+<h1>Eliminar</h1>
+<p>¿Deseas Eliminar <strong>@Model.Id_Guia_de_Remision</strong>?</p>
+
+<form action="~/inventario/eliminar" method="post">
+    <input type="hidden" asp-for="Id_Guia_de_Remision">
+    <button class="btn btn btn-default">Si</button>
+    <a href="~/inventario/listar" class="btn btn-default a-btn-slide-text">No</a>
+</form>

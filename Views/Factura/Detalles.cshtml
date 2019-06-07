@@ -1,0 +1,28 @@
+@model Factura
+@{
+    var Factura_Item = (List<Factura_Item>)ViewBag.Factura_Items;
+}
+<h1>Detalles de la Boleta</h1>
+
+<p>Cliente: @Model.Cliente.Nombre</p>
+<p>Numero de Guia de Remision: @Model.Id_Factura</p>
+<p>Fecha de Llegada: @Model.Fecha_Realizada</p>
+
+ <table class="table">
+    <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+    </tr>
+
+    @foreach(var p in Factura_Item) {
+        <tr>
+            <td>@p.Producto.Nombre</td>
+            <td>@p.Producto.Precio</td>
+            <td>@p.Cantidad</td>
+            <td>@p.Subtotal</td>
+        </tr>
+    }
+</table>
+<p>Total: @Model.Total</p>

@@ -266,7 +266,7 @@
         <label>Producto:</label>
         <select id="Id_Producto">
             @foreach(var producto in productos){
-                <option value="@producto.Id_Producto">@producto.Nombre</option>
+                <option value="@producto.Id_Producto">@producto.Nombre - @producto.Marca.Nombre</option>
             }
         </select>
         <button class="btn btn-default" onclick="buscarProducto()">Buscar</button>

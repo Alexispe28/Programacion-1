@@ -18,7 +18,7 @@ namespace Programacion_1.Models
         }
         public IActionResult Registrar(){
             ViewBag.Cliente = _context.Clientes.ToList();
-            ViewBag.Producto = _context.Productos.ToList();
+            ViewBag.Producto = _context.Productos.Include(x => x.Marca).ToList();
             return View();
         }
         public JsonResult buscarCliente(int a)
@@ -52,7 +52,7 @@ namespace Programacion_1.Models
             factura.Total = total;
             _context.Facturas.Add(factura);
             _context.SaveChanges();
-            return _context.Facturas.FirstOrDefault(x => x.Fecha_Realizada == factura.Fecha_Realizada).Id_Factura;
+            return _context.Facturas.Last().Id_Factura;
         }
          public void RegistrarInventario(int id_Factura)
          {
@@ -86,6 +86,15 @@ namespace Programacion_1.Models
             {
                 subtotal.Add(stringifiedTable[i]);
             }
+            try{
+                for(int i = 0; i < codigo.Count() - 1; i++){
+                    if(int.Parse(cantidad[i]) > _context.Inventarios.Where(x => x.Id_Producto == int.Parse(codigo[i])).Sum(y => y.Cantidad_Total)){
+                        return Json("El producto " + _context.Inventarios.Include(p => p.Producto).FirstOrDefault(x => x.Id_Producto == int.Parse(codigo[i])).Producto.Nombre + " no se encuentra.");
+                    }
+                }
+            }catch(Exception e){
+                return Json("Uno de los productos no existe en el inventarios. Verifique cual productos hay en el Inventarios.");
+            }
             List<Factura_Item> Factura_Item = new List<Factura_Item>();
             decimal ValorTotal = 0;
             for(int i = 0; i < codigo.Count() - 1; i++){
@@ -104,7 +113,7 @@ namespace Programacion_1.Models
             _context.Factura_Items.AddRange(Factura_Item);
             _context.SaveChanges();
             RegistrarInventario(id_Factura);
-            return Json("Se ha registrado");
+            return Json("Se ha registrado.");
         }
         public IActionResult Listar()
         {
@@ -122,6 +131,31 @@ namespace Programacion_1.Models
             .Where(x => x.Id_Factura == id).ToList();
             return View(p);
         }
+        //Eliminar
+        public IActionResult Eliminar(int id)
+        {
+            var c = _context.Facturas.FirstOrDefault(x => x.Id_Factura == id);
+            return View(c);
+        }
+        [HttpPost]
+        public IActionResult Eliminar(Factura f)
+        {
+            if (f != null) {
+                var facturaItems = _context.Factura_Items.Where(x => x.Id_Factura == f.Id_Factura);
+                List<Inventario> inventario = new List<Inventario>();
+                foreach(var e in facturaItems){
+                    Inventario inv = new Inventario();
+                    inv.Id_Producto = e.Id_Producto;
+                    inv.Cantidad_Total = e.Cantidad;
+                    inventario.Add(inv);
+                }
+                _context.AddRange(inventario);
+                _context.SaveChanges();
+                _context.Facturas.Remove(f);
+                _context.SaveChanges();
+            }
 
+            return RedirectToAction("Listar");
+        }
     }
 }

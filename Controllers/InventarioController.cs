@@ -18,7 +18,7 @@ namespace Programacion_1.Models
         }
         public IActionResult Registrar(){
             ViewBag.Proveedor = _context.Proveedors.ToList();
-            ViewBag.Producto = _context.Productos.ToList();
+            ViewBag.Producto = _context.Productos.Include(x => x.Marca).ToList();
             return View();
         }
          public JsonResult buscarProveedor(int a)
@@ -51,7 +51,7 @@ namespace Programacion_1.Models
             guiaRemision.Total = total;
             _context.Guia_de_Remisions.Add(guiaRemision);
             _context.SaveChanges();
-            return _context.Guia_de_Remisions.FirstOrDefault(x => x.Fecha_de_Llegada == guiaRemision.Fecha_de_Llegada).Id_Guia_de_Remision;
+            return _context.Guia_de_Remisions.Last().Id_Guia_de_Remision;
         }
          public void RegistrarInventario(int id_Guia_de_Remision)
          {
@@ -136,6 +136,32 @@ namespace Programacion_1.Models
                 }
             }
             return View(inv);
+        }
+        //Eliminar
+        public IActionResult Eliminar(int id)
+        {
+            var c = _context.Guia_de_Remisions.FirstOrDefault(x => x.Id_Guia_de_Remision == id);
+            return View(c);
+        }
+        [HttpPost]
+        public IActionResult Eliminar(Guia_de_Remision g)
+        {
+            if (g != null) {
+                var guiaItems = _context.Guia_de_Remision_Items.Where(x => x.Id_Guia_de_Remision == g.Id_Guia_de_Remision);
+                List<Inventario> inventario = new List<Inventario>();
+                foreach(var e in guiaItems){
+                    Inventario inv = new Inventario();
+                    inv.Id_Producto = e.Id_Producto;
+                    inv.Cantidad_Total = -e.Cantidad;
+                    inventario.Add(inv);
+                }
+                _context.AddRange(inventario);
+                _context.SaveChanges();
+                _context.Guia_de_Remisions.Remove(g);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Listar");
         }
     }
 }

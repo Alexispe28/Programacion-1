@@ -2814,6 +2814,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Factura/Detalles.cshtml",
+      "TargetPath": "Views/Factura/Detalles.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Cliente/Actualizar.cshtml",
       "TargetPath": "Views/Cliente/Actualizar.cshtml",
       "FileKind": "mvc"
@@ -2846,6 +2851,11 @@
     {
       "FilePath": "Views/Factura/Listar.cshtml",
       "TargetPath": "Views/Factura/Listar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Inventario/Eliminar.cshtml",
+      "TargetPath": "Views/Inventario/Eliminar.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2901,6 +2911,11 @@
     {
       "FilePath": "Views/Cliente/Listar.cshtml",
       "TargetPath": "Views/Cliente/Listar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Factura/Eliminar.cshtml",
+      "TargetPath": "Views/Factura/Eliminar.cshtml",
       "FileKind": "mvc"
     },
     {
