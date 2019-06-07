@@ -111,5 +111,17 @@ namespace Programacion_1.Models
             var Facturas = _context.Facturas.Include(x => x.Cliente).ToList();
             return View(Facturas);
         }
+        public IActionResult Detalles(int id)
+        {
+            var p = _context.Facturas.Include(s => s.Cliente).FirstOrDefault(x => x.Id_Factura == id);
+            
+            if (p == null) {
+                return NotFound();
+            }
+            ViewBag.Factura_Items = _context.Factura_Items.Include(m => m.Producto)
+            .Where(x => x.Id_Factura == id).ToList();
+            return View(p);
+        }
+
     }
 }
