@@ -2844,6 +2844,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Factura/Listar.cshtml",
+      "TargetPath": "Views/Factura/Listar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Producto/Listar.cshtml",
       "TargetPath": "Views/Producto/Listar.cshtml",
       "FileKind": "mvc"
