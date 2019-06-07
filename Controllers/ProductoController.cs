@@ -1,10 +1,12 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Programacion_1.Models;
 namespace Programacion_1.Controllers
 {
+    [Authorize]
     public class ProductoController : Controller
     {
        private ProyectoContext _context { get; }

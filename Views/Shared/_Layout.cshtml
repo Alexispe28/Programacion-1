@@ -37,6 +37,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if (Context.User.Identity.IsAuthenticated) {
                         <li class="dropdown">
                             <a class="dropdown-toggle nav-link text-dark" data-toggle="dropdown" href="#">Menu</a>
                             <ul class="dropdown-menu">
@@ -44,22 +45,22 @@
                                 <li><a class="nav-link text-dark" asp-area="" asp-controller="Marca" asp-action="Listar">Marca</a></li>
                                 <li><a class="nav-link text-dark" asp-area="" asp-controller="Categoria" asp-action="Listar">Categoria</a></li>
                                 <li><a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="Listar">Producto</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Inventario" asp-action="Listar">Inventario</a></li>                            
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="Listar">Cliente</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Factura" asp-action="Listar">Factura</a></li> 
                             </ul>
                         </li>
-                        @if (Context.User.Identity.IsAuthenticated) {
-                            <li class="nav-item">
+                        }
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                         @if (Context.User.Identity.IsAuthenticated) {
+                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar sesión</a>
                             </li>
+                         }else{
+                            <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register"><span class="glyphicon glyphicon-user"></span> Crear cuenta</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Iniciar sesión</a></li>
                         }
-                        else {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Crear cuenta</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Iniciar sesión</a>
-                            </li>
-                        }
-
                     </ul>
                 </div>
             </div>

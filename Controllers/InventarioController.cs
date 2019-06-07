@@ -6,9 +6,11 @@ using Programacion_1.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Programacion_1.Models
 {
+    [Authorize]
     public class InventarioController : Controller
     {
         private ProyectoContext _context { get; }

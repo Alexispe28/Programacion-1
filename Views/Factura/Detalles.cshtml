@@ -5,8 +5,8 @@
 <h1>Detalles de la Boleta</h1>
 
 <p>Cliente: @Model.Cliente.Nombre</p>
-<p>Numero de Guia de Remision: @Model.Id_Factura</p>
-<p>Fecha de Llegada: @Model.Fecha_Realizada</p>
+<p>Numero de Factura: @Model.Id_Factura</p>
+<p>Fecha Realizada: @Model.Fecha_Realizada</p>
 
  <table class="table">
     <tr>
@@ -26,3 +26,5 @@
     }
 </table>
 <p>Total: @Model.Total</p>
+<a href="~/factura/listar" 
+class="btn btn-primary a-btn-slide-text">Regresar</a>

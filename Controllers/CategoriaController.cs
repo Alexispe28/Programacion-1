@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Programacion_1.Models;
 
 namespace Programacion_1.Controllers
 {
+    [Authorize]
     public class CategoriaController : Controller
     {
        private ProyectoContext _context { get; }
