@@ -94,7 +94,7 @@ namespace Programacion_1.Models
                         return Json("El producto " + _context.Inventarios.Include(p => p.Producto).FirstOrDefault(x => x.Id_Producto == int.Parse(codigo[i])).Producto.Nombre + " no se encuentra.");
                     }
                 }
-            }catch(Exception e){
+            }catch(Exception ){
                 return Json("Uno de los productos no existe en el inventarios. Verifique cual productos hay en el Inventarios.");
             }
             List<Factura_Item> Factura_Item = new List<Factura_Item>();
